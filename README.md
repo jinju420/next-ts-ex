@@ -34,6 +34,16 @@ tailwind css intellisence
 npm i react-icons --save
 ```
 
+### tmdb api 요청 url
+
+[요청 url 확인](https://developers.themoviedb.org/3/movies/get-movie-details)
+
+### netflix 오리지널 tv시리즈 요청 url
+
+```
+  https://api.themoviedb.org/3/discover/tv?api_key=###&with_networks=213
+```
+
 ### tmdb 영화 장르 코드 번호
 
 [영상 코드 번호](https://developers.themoviedb.org/3/genres/get-movie-list)
