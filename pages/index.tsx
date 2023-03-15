@@ -4,14 +4,16 @@ import Head from 'next/head';
 
 const Home: NextPage = () => {
 	return (
-		<div className='flex min-h-screen flex-col items-center justify-center py-2'>
+		<div>
 			<Head>
-				<title>GRANHAND.</title>
+				<title>Netflix Clone-coding</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
 			<Header />
-			<main className=''></main>
+			<main className=''>
+				<section></section>
+			</main>
 		</div>
 	);
 };
