@@ -3,8 +3,8 @@ function Header() {
 		<header>
 			<h1>GRANHAND.</h1>
 
-			<ul>
-				<li>menu</li>
+			<ul className='bg-[aqua] text-[pink]'>
+				<li className='text-[#fff]'>menu</li>
 				<li>menu</li>
 				<li>menu</li>
 				<li>menu</li>
