@@ -13,7 +13,7 @@ function Banner({ original }: Props) {
 
 	useEffect(() => {
 		//0~20사이의 랜덤 정수값을 반환하는 공식
-		//Math.floor(Math.random() * 20)
+		//Math.floor(Math.random() * 19)
 		console.log(Math.floor(Math.random() * original.length - 1));
 		setTV(original[Math.floor(Math.random() * original.length - 1)]);
 	}, [original]);
@@ -21,9 +21,16 @@ function Banner({ original }: Props) {
 	console.log(TV);
 
 	return (
-		<section className='flex flex-col space-y-2 py-16 pt-[40vh] pl-[3vw] md:space-y-4 lg:h[65vh] lg:justify-end lg:pb-12'>
+		<section className='flex flex-col space-y-2 py-16 pt-[40vh] md:space-y-4 lg:h[65vh] lg:justify-end lg:pb-12'>
 			<div className='absolute top-0 left-0 z-[1] h-[95vh] w-full'>
-				<Image src={`${baseURL}${TV?.backdrop_path}`} alt={`TV?.name`} priority fill quality={50} className='object-cover' />
+				<Image
+					src={`${baseURL}original${TV?.backdrop_path}`}
+					alt={`TV?.name`}
+					priority
+					fill
+					quality={50}
+					className='object-cover'
+				/>
 			</div>
 
 			<h1 className='relative z-[3] text-2xl font-bold drop-shadow md:text-4xl lg:text-7xl'>{TV?.name}</h1>
