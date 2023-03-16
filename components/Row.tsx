@@ -20,7 +20,7 @@ function Row({ title, movies }: Props) {
 				<FaAngleLeft className='absolute top-0 bottom-0 left-2 z-[4] m-auto h-9 cursor-pointer opacity-[0] transition hover:scale-[1.5] group-hover:opacity-[1]' />
 
 				{/* thumbnail frame */}
-				<div className='flex items-center space-x-0.5 overflow-x-scroll scrollbar-thin scrollbar-track-gray-300 scrollbar-thumb-gray-500 scrollbar-thumb-rounded-full scrollbar-tranck-rounded-full scrollbar-hide hover:scrollbar-default !pb-4 md:space-x-2.5 md:p-2'>
+				<div className='flex items-center space-x-0.5 overflow-x-scroll scrollbar-thin scrollbar-track-gray-300 scrollbar-thumb-gray-500 scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-hide !pb-4 hover:scrollbar-default md:space-x-2.5 md:p-2'>
 					{movies.map((movie) => (
 						<Thumbnail key={movie.id} movie={movie} />
 					))}
