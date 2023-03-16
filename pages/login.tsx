@@ -10,9 +10,9 @@ interface Inputs {
 }
 
 function login() {
-	const { signIn, signUp } = useAuth();
 	//로그인 눌렀는지 안 눌렀는지 확인하기위한 용도
 	const [Login, setLogin] = useState(false);
+	const { signIn, signUp } = useAuth();
 	const {
 		register, //원하는 인풋요소에 전개연산자로 등록해서 값을 관리
 		handleSubmit, //해당훅 전용 전송 이벤트 핸들러
