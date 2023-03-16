@@ -27,8 +27,11 @@ function Banner({ original }: Props) {
 					src={`${baseURL}original${TV?.backdrop_path}`}
 					alt={`TV?.name`}
 					priority
+					// placeholder='blur'
+					// blurDataURL={`${baseURL}original${TV?.backdrop_path}`}
 					fill
-					quality={50}
+					quality={100}
+					sizes='100vw'
 					className='object-cover'
 				/>
 			</div>
