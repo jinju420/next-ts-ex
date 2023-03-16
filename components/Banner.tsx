@@ -1,6 +1,6 @@
 import { TV } from '@/typings';
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import { baseURL } from '@/constants/movie';
 import { FaInfoCircle, FaPlay } from 'react-icons/fa';
 
@@ -13,9 +13,11 @@ function Banner({ original }: Props) {
 
 	useEffect(() => {
 		//0~20사이의 랜덤 정수값을 반환하는 공식
-		//Math.floor(Math.random() * 19)
-		console.log(Math.floor(Math.random() * original.length - 1));
-		setTV(original[Math.floor(Math.random() * original.length - 1)]);
+		//Math.floor(Math.random() * 20)
+		//console.log(Math.floor(Math.random() * 19));
+		const num = Math.floor(Math.random() * 19);
+		console.log(num);
+		setTV(original[num]);
 	}, [original]);
 
 	console.log(TV);
@@ -25,15 +27,15 @@ function Banner({ original }: Props) {
 			<div className='absolute top-0 left-0 z-[1] h-[95vh] w-full'>
 				<Image
 					src={`${baseURL}original${TV?.backdrop_path}`}
-					alt={`TV?.name`}
+					alt={`${TV?.name}`}
 					priority
-					// placeholder='blur'
-					// blurDataURL={`${baseURL}original${TV?.backdrop_path}`}
 					fill
-					quality={100}
+					//placeholder='blur'
+					//blurDataURL='data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=='
 					sizes='100vw'
 					className='object-cover'
 				/>
+				<div className='absolute top-0 left-0 z-[5] w-[100vw] h-[100%] bg-gradient1'></div>
 			</div>
 
 			<h1 className='relative z-[3] text-2xl font-bold drop-shadow md:text-4xl lg:text-7xl'>{TV?.name}</h1>
