@@ -1,20 +1,21 @@
 import Link from 'next/link';
 import { FaBell, FaSearch } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
+import useAuth from '@/hooks/useAuth';
 
 function Header() {
+	const { logout } = useAuth();
 	const [Scrolled, setScrolled] = useState(false);
 
 	useEffect(() => {
 		const handleScroll = () => (window.scrollY > 0 ? setScrolled(true) : setScrolled(false));
 		window.addEventListener('scroll', handleScroll);
-
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
 
 	return (
 		<header className={`transition-colors duration-[.5s] ${Scrolled && 'bg-[#141414]'}`}>
-			{/* logo, menu 그룹 */}
+			{/* logo ,menu 그룹 */}
 			<div className='flex items-center space-x-2 md:space-x-10'>
 				<h1>
 					<img src='https://rb.gy/ulxxee' alt='netflix' width={100} className='cursor-pointer' />
@@ -35,7 +36,7 @@ function Header() {
 				<p className='hidden lg:inline'>Kids</p>
 				<FaBell className='w-6' />
 				<Link href='/'>
-					<img src='https://rb.gy/g1pwyx' alt='profile' className='rounded' />
+					<img src='https://rb.gy/g1pwyx' alt='profile' className='rounded' onClick={logout} />
 				</Link>
 			</div>
 		</header>
