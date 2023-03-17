@@ -1,6 +1,6 @@
 import { TV } from '@/typings';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { baseURL } from '@/constants/movie';
 import { FaInfoCircle, FaPlay } from 'react-icons/fa';
 
@@ -9,6 +9,7 @@ interface Props {
 }
 
 function Banner({ original }: Props) {
+	const ref = useRef<any>(null);
 	const [TV, setTV] = useState<TV | null>(null);
 
 	useEffect(() => {
@@ -29,13 +30,22 @@ function Banner({ original }: Props) {
 					src={`${baseURL}original${TV?.backdrop_path}`}
 					alt={`${TV?.name}`}
 					priority
+					quality={70}
 					fill
 					//placeholder='blur'
 					//blurDataURL='data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=='
 					sizes='100vw'
 					className='object-cover'
+					onLoadingComplete={() => ref.current.remove()}
 				/>
+				{/* gradient mask */}
 				<div className='absolute top-0 left-0 z-[5] w-[100%] h-[100%] bg-gradient1'></div>
+
+				{/* loading bar */}
+				<div
+					ref={ref}
+					className='w-[40px] h-[40px] z-10 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] border-[4px] border-solid border-[orange] rounded-[50%] border-l-[transparent] animate-ani-rotation'
+				></div>
 			</div>
 
 			<h1 className='relative z-[3] text-2xl font-bold drop-shadow md:text-4xl lg:text-7xl'>{TV?.name}</h1>
