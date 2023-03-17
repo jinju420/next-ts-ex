@@ -12,8 +12,10 @@ export interface Movie {
 	release_date: string;
 	id: number;
 	title: string;
+	name: string;
 	original_language: string;
 	original_title: string;
+	originam_name: string;
 	video: boolean;
 	vote_average: number;
 	vout_count: number;

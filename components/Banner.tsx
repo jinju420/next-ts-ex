@@ -1,30 +1,31 @@
-import { TV } from '@/typings';
+import { Movie } from '@/typings';
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import { baseURL } from '@/constants/movie';
 import { FaInfoCircle, FaPlay } from 'react-icons/fa';
-import { modalState } from '@/atoms/globalAtom';
+import { modalState, movieState } from '@/atoms/globalAtom';
 import { useRecoilState } from 'recoil';
 
 interface Props {
-	original: TV[];
+	original: Movie[];
 }
 
 function Banner({ original }: Props) {
 	const ref = useRef<any>(null);
-	const [TV, setTV] = useState<TV | null>(null);
-	const [ShowModal, setShowModal] = useRecoilState(modalState);
+	const [TV, setTV] = useState<Movie | null>(null);
+	const [ShowModal, setShowModal] = useRecoilState<boolean>(modalState);
+	const [CurrentTV, setCurrentTV] = useRecoilState<any>(movieState);
 
 	useEffect(() => {
 		//0~20사이의 랜덤 정수값을 반환하는 공식
 		//Math.floor(Math.random() * 20)
 		//console.log(Math.floor(Math.random() * 19));
 		const num = Math.floor(Math.random() * 19);
-		console.log(num);
+		// console.log(num);
 		setTV(original[num]);
 	}, [original]);
 
-	console.log(TV);
+	// console.log(TV);
 
 	return (
 		<section className='flex flex-col space-y-2 py-16 pt-[40vh] md:space-y-4 lg:h[90vh] lg:justify-end lg:pb-12'>
@@ -59,7 +60,13 @@ function Banner({ original }: Props) {
 					<FaPlay /> Play
 				</button>
 
-				<button className='bannerButton bg-[gray]/70 text-white' onClick={() => setShowModal(true)}>
+				<button
+					className='bannerButton bg-[gray]/70 text-white'
+					onClick={() => {
+						setShowModal(true);
+						setCurrentTV(TV);
+					}}
+				>
 					More Info
 					<FaInfoCircle />
 				</button>
