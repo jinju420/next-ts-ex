@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import { baseURL } from '@/constants/movie';
 import { FaInfoCircle, FaPlay } from 'react-icons/fa';
+import { modalState } from '@/atoms/globalAtom';
+import { useRecoilState } from 'recoil';
 
 interface Props {
 	original: TV[];
@@ -11,6 +13,7 @@ interface Props {
 function Banner({ original }: Props) {
 	const ref = useRef<any>(null);
 	const [TV, setTV] = useState<TV | null>(null);
+	const [ShowModal, setShowModal] = useRecoilState(modalState);
 
 	useEffect(() => {
 		//0~20사이의 랜덤 정수값을 반환하는 공식
@@ -44,7 +47,7 @@ function Banner({ original }: Props) {
 				{/* loading bar */}
 				<div
 					ref={ref}
-					className='w-[40px] h-[40px] z-10 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] border-[4px] border-solid border-[orange] rounded-[50%] border-l-[transparent] animate-ani-rotation'
+					className='w-[40px] h-[40px] z-5 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] border-[4px] border-solid border-[orange] rounded-[50%] border-l-[transparent] animate-ani-rotation'
 				></div>
 			</div>
 
@@ -56,7 +59,7 @@ function Banner({ original }: Props) {
 					<FaPlay /> Play
 				</button>
 
-				<button className='bannerButton bg-[gray]/70 text-white'>
+				<button className='bannerButton bg-[gray]/70 text-white' onClick={() => setShowModal(true)}>
 					More Info
 					<FaInfoCircle />
 				</button>

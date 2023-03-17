@@ -5,6 +5,11 @@ import requests from '@/utils/requests';
 import { Movie, TV } from '@/typings';
 import Banner from '@/components/Banner';
 import Row from '@/components/Row';
+import Modal from '@/components/Modal';
+import { modalState } from '@/atoms/globalAtom';
+import { useRecoilValue } from 'recoil';
+import { auth } from '@/firebase';
+import useAuth from '@/hooks/useAuth';
 
 interface IndexProps {
 	original: TV[];
@@ -18,6 +23,8 @@ interface IndexProps {
 
 const Home: NextPage<IndexProps> = ({ original, topRated, crime, drama, fantasy, action, animation }) => {
 	// console.log(original);
+	const showModal = useRecoilValue(modalState);
+	const { user } = useAuth();
 	return (
 		<div className='relative h-screen bg-gradient-to-b from-[#333] to-[#141414]'>
 			<Head>
@@ -37,6 +44,8 @@ const Home: NextPage<IndexProps> = ({ original, topRated, crime, drama, fantasy,
 					<Row title='Animation' movies={animation} />
 				</section>
 			</main>
+
+			{showModal && <Modal />}
 		</div>
 	);
 };
