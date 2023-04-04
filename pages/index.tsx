@@ -22,7 +22,6 @@ interface IndexProps {
 }
 
 const Home: NextPage<IndexProps> = ({ original, topRated, crime, drama, fantasy, action, animation }) => {
-	// console.log(original);
 	const showModal = useRecoilValue(modalState);
 	const { user } = useAuth();
 	return (

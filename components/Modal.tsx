@@ -8,7 +8,6 @@ function Modal() {
 	const ref = useRef<any>(null);
 	const [ShowModal, setShowModal] = useRecoilState(modalState);
 	const Movie = useRecoilValue(movieState);
-	// console.log(Movie);
 
 	return (
 		<aside className='fixed w-full h-[100vh] top-0 left-0 z-[10] bg-[rgba(0,0,0,.9)] p-10 flex items-center justify-center'>

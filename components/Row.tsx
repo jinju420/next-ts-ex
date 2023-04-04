@@ -27,7 +27,7 @@ function Row({ title, movies }: Props) {
 				{title}
 			</h2>
 
-			<div className='group relative '>
+			<div className='group relative'>
 				{/* left btn */}
 				<FaAngleLeft
 					className='absolute top-0 bottom-0 left-2 z-[4] m-auto h-9 cursor-pointer opacity-[0] transition hover:scale-[1.5] group-hover:opacity-[1]'

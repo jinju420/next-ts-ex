@@ -21,11 +21,8 @@ function Banner({ original }: Props) {
 		//Math.floor(Math.random() * 20)
 		//console.log(Math.floor(Math.random() * 19));
 		const num = Math.floor(Math.random() * 19);
-		// console.log(num);
 		setTV(original[num]);
 	}, [original]);
-
-	// console.log(TV);
 
 	return (
 		<section className='flex flex-col space-y-2 py-16 pt-[40vh] md:space-y-4 lg:h[90vh] lg:justify-end lg:pb-12'>
@@ -36,8 +33,6 @@ function Banner({ original }: Props) {
 					priority
 					quality={70}
 					fill
-					//placeholder='blur'
-					//blurDataURL='data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=='
 					sizes='100vw'
 					className='object-cover'
 					onLoadingComplete={() => ref.current.remove()}
